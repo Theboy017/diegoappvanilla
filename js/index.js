@@ -105,4 +105,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
         e.preventDefault();
         root.classList.toggle('dark');
     })
+    document.getElementById('file').addEventListener('change', function () {
+        const fileNameSpan = document.getElementById('filespan');
+        if (this.files.length > 0) {
+            fileNameSpan.textContent = this.files[0].name;
+        } else {
+            fileNameSpan.textContent = 'No file chosen';
+        }
+    });
 });
