@@ -1,0 +1,12 @@
+{
+  "name": "diegoappvanilla",
+  "version": "1.0.0",
+  "description": "Visualizador de archivo excels",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alejandro Velasquez",
+  "license": "ISC"
+}
