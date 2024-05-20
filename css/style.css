@@ -1,5 +1,18 @@
 html {
-    color: black;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    position: relative;
+}
+
+p {
+    text-wrap: balance;
+    text-align: center;
 }
 
 .contenido {
@@ -47,6 +60,12 @@ html {
     cursor: pointer;
 }
 
+.tabla {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 table {
     border: 1px solid white;
     border-collapse: collapse;
@@ -78,6 +97,23 @@ table th {
     font-size: .85em;
     letter-spacing: .1em;
     text-transform: uppercase;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: ;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 600px) {
@@ -123,10 +159,4 @@ table th {
     table td:last-child {
         border-bottom: 0;
     }
-}
-
-.tabla {
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
