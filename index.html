@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Diego App</title>
+</head>
+
+<body>
+    <section>
+        <button>
+            Toggle Color
+        </button>
+        <div class="contenido ">
+            <form method="post" enctype="multipart/form-data">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <label for="file">
+                        <input type="file" name="file" id="file" class="custom-file-input" accept=".xlsx,.xlsm,.xlm">
+                        <span class="file-name" id="filespan">Sube Tu Excel</span>
+                    </label>
+                    <button id="subir">Subir</button>
+                </div>
+            </form>
+        </div>
+        <div id="mostrar" class="contenido">
+            <h1>Listado Anterior</h1>
+            <ul id="listado">
+            </ul>
+            <div class="hidden">
+                <button type="button" id="deleteExels">Borrar Anteriores</button>
+            </div>
+        </div>
+        <div class="contenido">
+            <h1>Listado Actual</h1>
+            <div id="tabla" class="tabla">
+            </div>
+        </div>
+    </section>
+    <script type="module" src="./js/index.js"></script>
+    <script>
+        document.getElementById('file').addEventListener('change', function () {
+            const fileNameSpan = document.getElementById('filespan');
+            if (this.files.length > 0) {
+                fileNameSpan.textContent = this.files[0].name;
+            } else {
+                fileNameSpan.textContent = 'No file chosen';
+            }
+        });
+    </script>
+</body>
+
+</html>
