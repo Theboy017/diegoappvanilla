@@ -3,11 +3,16 @@ html {
     font-size: 16px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
     position: relative;
+    transition: 0.5s;
 }
 
 p {
@@ -101,10 +106,9 @@ table th {
 
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 50px;
-    background-color: ;
 }
 
 footer {
@@ -114,6 +118,11 @@ footer {
     position: fixed;
     align-items: center;
     justify-content: center;
+}
+
+.dark {
+    background-color: #253031;
+    color: #ddd;
 }
 
 @media screen and (max-width: 600px) {
@@ -160,3 +169,15 @@ footer {
         border-bottom: 0;
     }
 }
+
+#darkLight {
+    position: relative;
+    display: block;
+    width: 120px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: var(#253031);
+    transition: 0.5s;
+}
+
+#darkLight .indicador {}
