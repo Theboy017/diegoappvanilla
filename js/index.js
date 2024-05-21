@@ -113,4 +113,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             fileNameSpan.textContent = 'No file chosen';
         }
     });
+    document.getElementById('darkLight').onclick = function () {
+        this.classList.toggle('active');
+    }
 });

@@ -171,13 +171,34 @@ footer {
 }
 
 #darkLight {
-    position: relative;
+    width: 50px;
+    height: 25px;
     display: block;
-    width: 120px;
-    height: 60px;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
     border-radius: 30px;
-    background-color: var(#253031);
+    background-color: #222;
+    box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
+        inset 0 8px 8px rgba(0, 0, 0, 0.1),
+        inset 0 -4px 4px rgba(0, 0, 0, 0.1);
+}
+
+#darkLight .indicador {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background-color: linear-gradient(to bottom, #444, #222);
+    border-radius: 50%;
+    transform: scale(0.9);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+        inset 0 4px 4px rgba(255, 255, 255, 0.2),
+        inset 0 8px 60px rgba(255, 255, 255, 0.2);
     transition: 0.5s;
 }
 
-#darkLight .indicador {}
+#darkLight.active .indicador {
+    left: 25px;
+}
