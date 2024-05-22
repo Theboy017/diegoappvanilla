@@ -1,7 +1,22 @@
+:root {
+    --color-500: #999999;
+    --color-400: #adadad;
+    --color-300: #c8c8c8;
+    --color-200: #dddddd;
+    --color-100: #ededed;
+    --color-50: #f7f7f7;
+}
+
+.dark {
+    background-color: #253031;
+    color: #ddd;
+}
+
 html {
     font-family: Helvetica, sans-serif;
     font-size: 16px;
 }
+
 
 * {
     box-sizing: border-box;
@@ -11,8 +26,34 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     position: relative;
     transition: 0.5s;
+    background-color: var(--color-50);
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    background-color: var(--color-300);
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    position: relative;
+    margin-top: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-200);
+}
+
+section {
+    padding: 5px;
 }
 
 p {
@@ -25,6 +66,25 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+form {
+    width: 100%;
+}
+
+.boxcontenido {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 70%;
+    max-width: 350px;
+    margin: 0 auto;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
 }
 
 .hidden {
@@ -102,27 +162,6 @@ table th {
     font-size: .85em;
     letter-spacing: .1em;
     text-transform: uppercase;
-}
-
-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 50px;
-}
-
-footer {
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    position: fixed;
-    align-items: center;
-    justify-content: center;
-}
-
-.dark {
-    background-color: #253031;
-    color: #ddd;
 }
 
 @media screen and (max-width: 600px) {

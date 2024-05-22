@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
     function fecha() {
         let f = new Date();
-        return f.getDay() + "-" + (f.getMonth() + 1) + "-" + f.getDate()
+        return (f.getMinutes()) + "-" + (f.getHours()) + "-" + (f.getDate()) + "-" + (f.getMonth() + 1)
 
     }
     function showListado() {
@@ -98,13 +98,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
         window.localStorage.clear();
     }
 
-    let root = document.querySelector(":root");
+    /*let root = document.querySelector(":root");
     let button = document.querySelector("button");
 
     button.addEventListener('click', (e) => {
         e.preventDefault();
         root.classList.toggle('dark');
-    })
+    })*/
     document.getElementById('file').addEventListener('change', function () {
         const fileNameSpan = document.getElementById('filespan');
         if (this.files.length > 0) {
