@@ -1,36 +1,56 @@
 :root {
-    --color-500: #999999;
-    --color-400: #adadad;
-    --color-300: #c8c8c8;
-    --color-200: #dddddd;
-    --color-100: #ededed;
-    --color-50: #f7f7f7;
+    --color-light-500: #999999;
+    --color-light-400: #adadad;
+    --color-light-300: #c8c8c8;
+    --color-light-200: #dddddd;
+    --color-light-100: #ededed;
+    --color-light-50: #f7f7f7;
+    --color-dark-950: #253031;
+    --color-dark-900: #364343;
+    --color-dark-800: #3d4c4d;
+    --color-dark-700: #445a5a;
+    --color-dark-600: #4e6c6c;
+    color-scheme: light;
 }
 
 .dark {
-    background-color: #253031;
-    color: #ddd;
+    background-color: var(--color-dark-900);
+    color: var(--color-light-50);
 }
+
 
 html {
     font-family: Helvetica, sans-serif;
     font-size: 16px;
+    background-color: var(--color-light-50);
+    color: #222;
 }
-
 
 * {
     box-sizing: border-box;
 }
 
-body {
+h1,
+h2,
+h3 {
     margin: 0;
     padding: 0;
-    height: 100vh;
+}
+
+body {
+    margin: 0;
+    padding: 0 5px;
     display: flex;
     flex-direction: column;
     position: relative;
     transition: 0.5s;
-    background-color: var(--color-50);
+
+}
+
+main {
+    min-height: calc(100vh - 101px);
+    position: relative;
+    overflow: hidden;
 }
 
 header {
@@ -46,14 +66,21 @@ footer {
     width: 100%;
     display: flex;
     position: relative;
-    margin-top: 1.5rem;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-200);
+    background-color: var(--color-300);
 }
 
-section {
-    padding: 5px;
+.box_upload {
+    min-height: 350px;
+    padding: 1.5rem 0;
+}
+
+.activo {
+    overflow: hidden;
+    margin-top: -350px;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
 }
 
 p {
@@ -62,10 +89,14 @@ p {
 }
 
 .contenido {
+    gap: 15px;
+    padding: 1rem 0 2rem;
     display: flex;
+    position: relative;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    transition: all 1s ease-in-out 0s;
 }
 
 form {
@@ -73,26 +104,28 @@ form {
 }
 
 .boxcontenido {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     width: 70%;
     max-width: 350px;
     margin: 0 auto;
     border: 1px solid;
     padding: 10px;
     border-radius: 8px;
-    justify-content: center;
-    align-items: center;
     height: 150px;
 }
 
 .hidden {
-    display: none;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: 1s;
 }
 
 .show {
     display: block;
+    opacity: 1;
+    transition: 0.5s;
 }
 
 #listado {
@@ -132,13 +165,12 @@ form {
 }
 
 table {
-    border: 1px solid white;
+    border: 1px solid;
     border-collapse: collapse;
     margin: 0;
     padding: 0;
     width: 100%;
     table-layout: fixed;
-    color: black;
 }
 
 table h1 {
@@ -147,7 +179,6 @@ table h1 {
 }
 
 table tr {
-    background-color: #fff;
     border: 1px solid #ddd;
     padding: .35em;
 }

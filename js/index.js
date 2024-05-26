@@ -1,66 +1,38 @@
 import readExcelFile from 'https://cdn.jsdelivr.net/npm/read-excel-file@5.8.1/+esm';
-document.addEventListener('DOMContentLoaded', (e) => {
-    const init = document.getElementById('subir');
-    const tabla = document.getElementById('tabla');
-    const show = document.getElementById('mostrar');
-    const listado = document.getElementById('listado');
-    const fileselector = document.getElementById('file');
-    const deleteExels = document.getElementById('deleteExels');
-    init.addEventListener('click', loadExcel);
-    listado.addEventListener('click', showTabla);
-    deleteExels.addEventListener('click', deleteExcel);
-
-    showListado()
-    async function loadExcel(e) {
-        e.preventDefault()
+class LoadExcel {
+    async upload(fileselector) {
         if (fileselector.files.length == 0) return
         await readExcelFile(fileselector.files[0])
             .then((rows) => {
-                let name = rename(fileselector.files[0].name);
+                let name = this.rename(fileselector.files[0].name);
                 let newjson = JSON.stringify(rows);
                 localStorage.setItem(name, newjson);
                 fileselector.value = "";
-                showListado();
+                this.getInfo();
             });
     }
-    function rename(file) {
-        let name = file.replace(/\.[^/.]+$/, '').replace(/[.\s]/g, '');
-        let namef = name.concat('-', fecha());
-        return namef
-    }
-    function fecha() {
-        let f = new Date();
-        return (f.getMinutes()) + "-" + (f.getHours()) + "-" + (f.getDate()) + "-" + (f.getMonth() + 1)
-
-    }
-    function showListado() {
-        validar();
+    getInfo() {
         Object.keys(window.localStorage).forEach((item) => {
             let li = document.createElement('li');
             li.innerHTML = item
             listado.appendChild(li)
         });
-        if (listado.childElementCount == 0) {
-            let msj = document.createElement('p');
-            msj.innerText = "No Hay Resultados";
-            show.appendChild(msj);
+        if (window.localStorage.length > 0) {
+            return false
+        } else {
+            return true
         }
+    }
+    setInfo() {
 
     }
-    function validar() {
-        if (listado.childElementCount > 0) {
-            while (listado.firstChild) {
-                listado.removeChild(listado.lastChild);
-            }
-        }
-    }
-    function showTabla(e) {
+    showTabla(e) {
+
         let table = document.createElement('table');
         let thead = document.createElement('thead');
         let tbody = document.createElement('tbody');
         let archivo = ""
 
-        removeDuplicateTable()
         if (e.target && e.target.tagName == 'LI') {
             archivo = window.localStorage.getItem(e.target.innerText)
         }
@@ -89,31 +61,24 @@ document.addEventListener('DOMContentLoaded', (e) => {
         table.setAttribute('id', e.target.innerText)
         tabla.appendChild(table)
     }
-    function removeDuplicateTable() {
-        if (tabla.children.length > 0) {
-            tabla.removeChild(tabla.lastChild)
+    rename(file) {
+        let name = file.replace(/\.[^/.]+$/, '').replace(/[.\s]/g, '');
+        let namef = name.concat('-', this.fecha());
+        return namef
+    }
+    fecha() {
+        let f = new Date();
+        return (f.getDate()) + "-" + (f.getMonth() + 1)
+    }
+    validarListado() {
+        if (listado.childElementCount > 0) {
+            while (listado.firstChild) {
+                listado.removeChild(listado.lastChild);
+            }
         }
     }
-    function deleteExcel() {
+    deleteInfo() {
         window.localStorage.clear();
     }
-
-    /*let root = document.querySelector(":root");
-    let button = document.querySelector("button");
-
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        root.classList.toggle('dark');
-    })*/
-    document.getElementById('file').addEventListener('change', function () {
-        const fileNameSpan = document.getElementById('filespan');
-        if (this.files.length > 0) {
-            fileNameSpan.textContent = this.files[0].name;
-        } else {
-            fileNameSpan.textContent = 'No file chosen';
-        }
-    });
-    document.getElementById('darkLight').onclick = function () {
-        this.classList.toggle('active');
-    }
-});
+}
+export default LoadExcel
